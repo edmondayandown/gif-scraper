@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "GIF Grabber — Tenor & Giphy Downloader",
+  "version": "1.1.0",
+  "description": "Download original-quality GIFs from Tenor & Giphy: bulk grab, hover one-click saves, auto-scroll + auto-download, search-term file names, ZIP export, duplicate skipping.",
+  "minimum_chrome_version": "110",
+  "permissions": ["downloads", "storage", "notifications", "activeTab", "scripting"],
+  "host_permissions": ["*://*.tenor.com/*", "*://*.giphy.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "GIF Grabber — download GIFs from Tenor & Giphy",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.tenor.com/*", "*://*.giphy.com/*"],
+      "js": ["lib/gg-core.js", "content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
